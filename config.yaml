@@ -1,0 +1,33 @@
+prefix:
+  cover: https://fourhoi.com/
+  video: https://surrit.com/
+
+suffix:
+  playlist: /playlist.m3u8
+
+# http request settings
+requests:
+  timeout: 10
+  retry: 5
+  delay: 2
+  proxy: 
+  headers:
+    User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 Edg/132.0.0.0
+
+# if you don't know how to use regex, please don't change it
+regex:
+  href:
+    movieCollection: <a class="text-secondary group-hover:text-primary" href="([^"]+)" alt="
+    publicPlaylist: <a href="([^"]+)" alt="
+    nextPage: <a href="([^"]+)" rel="next"
+  
+  data:
+    uuid: m3u8\|([a-f0-9\|]+)\|com\|surrit\|https\|video
+    title: <title>([^"]+)</title>
+    resolution: RESOLUTION=(\d+)x(\d+)
+    videoSlice: video(\d+).jpeg
+
+ffmpeg: ""    # input ffmpeg binary path if want to use ffmpeg
+quality: 0    # 1080, 720, 480, 360, 240, 144. 0 for best quality
+
+savePath: downloads
